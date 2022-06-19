@@ -91,6 +91,17 @@ module.exports = {
         remUnit: 75
       });
 
+    // 加载本地pdf文件
+    const fileRule = config.module.rule("file");
+    fileRule.uses.clear();
+    fileRule
+      .test(/\.pdf|ico$/)
+      .use("file-loader")
+      .loader("file-loader")
+      .options({
+        limit: 10000
+      });
+
     // it can improve the speed of the first screen, it is recommended to turn on preload
     config.plugin("preload").tap(() => [
       {
