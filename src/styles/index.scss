@@ -1,0 +1,140 @@
+@import "./mixin.scss";
+
+html {
+  font-size: 20px;
+}
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 21.4px !important;
+  }
+}
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 22px !important;
+  }
+}
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 26px !important;
+  }
+}
+
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*scroll在iOS上滑动卡顿的问题*/
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 解决1px border 不转rem*/
+.van-hairline--top-bottom::after {
+  border-width: 1px 0;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.altC {
+  text-align: center;
+}
+
+.altL {
+  text-align: left;
+}
+
+.altR {
+  text-align: right;
+}
+
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.card {
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+// 间距
+.mar10 {
+  margin: 10px;
+}
+.mar-r-10 {
+  margin-right: 10px;
+}
+.mar-r-20 {
+  margin-right: 20px;
+}
+.mar-x-10 {
+  margin: 0 10px;
+}
+.mar-y-10 {
+  margin: 10px 0;
+}
+.mar20 {
+  margin: 20px;
+}
+.mar-x-20 {
+  margin: 0 20px;
+}
+.mar-y-20 {
+  margin: 20px 0;
+}
+.mar30 {
+  margin: 30px;
+}
+.mar-x-30 {
+  margin: 0 30px;
+}
+.mar-y-30 {
+  margin: 30px 0;
+}
+.pad10 {
+  padding: 10px;
+}
+.pad-x-10 {
+  padding: 0 10px;
+}
+.pad-y-10 {
+  padding: 10px 0;
+}
+.pad20 {
+  padding: 20px;
+}
+.pad-x-20 {
+  padding: 0 20px;
+}
+.pad-y-20 {
+  padding: 20px 0;
+}
+.pad30 {
+  padding: 30px;
+}
+.pad-x-30 {
+  padding: 0 30px;
+}
+.pad-y-30 {
+  padding: 30px 0;
+}
+
+.scrollbar {
+  @include scroll();
+}
