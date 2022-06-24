@@ -3,9 +3,9 @@ import "lib-flexible"
 import App from "./App";
 import router from "./router";
 import "@/styles/index.scss";
-import htmlToPdf from "./components/htmlToPdf";
+import icbComponents from "@/components";
 
-Vue.use(htmlToPdf);
+Vue.use(icbComponents);
 Vue.config.productionTip = false;
 
 new Vue({
