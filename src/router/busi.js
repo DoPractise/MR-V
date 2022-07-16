@@ -45,12 +45,28 @@ const routes = [
     component: resolve => require(["@/views/pdf/preview3"], resolve)
   },
   {
-    path: "/parse-img",
-    name: "parse-img",
+    path: "/paste/img",
+    name: "pasteImg",
     meta: {
       title: "编辑器中粘贴显示图片"
     },
-    component: resolve => require(["@/views/parse-img/parse-img"], resolve)
+    component: resolve => require(["@/views/paste-img/pasteImg"], resolve)
+  },
+  {
+    path: "/paste/img2",
+    name: "pasteImg2",
+    meta: {
+      title: "编辑器中粘贴显示图片"
+    },
+    component: resolve => require(["@/views/paste-img/pasteImg2"], resolve)
+  },
+  {
+    path: "/mobile/demo1",
+    name: "mobileDemo1",
+    meta: {
+      title: "移动端适配模板1"
+    },
+    component: resolve => require(["@/views/mobile/demo1"], resolve)
   }
 ];
 export default routes;

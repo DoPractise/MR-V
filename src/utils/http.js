@@ -4,12 +4,12 @@ import { Toast } from "vant";
 import router from "@/router";
 import { baseUrl } from "@/config";
 
-export default function $axios(options) {
+export default function(options) {
   // 初始化实例
   const instance = axios.create({
     baseURL: options.baseUrl || baseUrl,
     headers: { "Content-Type": "application/json;charset=UTF-8" } || options.headers,
-    // timeout: 10000,
+    timeout: options.timeout || 10000,
     withCredentials: false
   });
 
@@ -36,9 +36,9 @@ export default function $axios(options) {
         const errorInfo = error.response;
         if (errorInfo) {
           error = errorInfo.data;
-          const errorStatus = errorInfo.status; // 404 403 500 ...
+          const retCode = errorInfo.status; // 404 403 500 ...
           router.push({
-            path: `/error/${errorStatus}`
+            path: `/error/${retCode}`
           });
         }
         return Promise.reject(error);
@@ -49,7 +49,7 @@ export default function $axios(options) {
     instance.interceptors.response.use(
       response => {
         let resData = response.data;
-        let code = resData.code;
+        let code = resData.retCode;
         if (code != 0) {
           Toast({
             type: "fail",
@@ -63,26 +63,27 @@ export default function $axios(options) {
               }
             }
           });
-          return Promise.reject(resData.body);
+          return Promise.reject(resData.data);
         }
-        return resData.body;
+        return resData.data;
       },
       err => {
         // 统一处理响应错误
         if (err && err.response) {
-          err.code = err.response.status + "";
-          err.message = err.response.statusText;
-          err.msg = getStatusInfo(err.response.status, err);
+          err.retCode = err.response.status + "";
+          err.retMsg = err.response.statusText;
+          err.retMsg = getStatusInfo(err);
         }
+
         // 超时处理
-        if (err.code.toUpperCase() === "ECONNABORTED" && err.message.toLowerCase().indexOf("timeout") !== -1) {
+        if (err.retCode.toUpperCase() === "ECONNABORTED" && err.retMsg.toLowerCase().indexOf("timeout") !== -1) {
           err.msg = "服务器响应超时";
         }
 
         Toast({
           type: "fail",
           duration: 1500,
-          message: err.msg,
+          message: err.retMsg,
           onClose: () => {}
         });
         return Promise.reject(err); // 返回接口返回的错误信息
@@ -111,32 +112,33 @@ export default function $axios(options) {
   });
 }
 
-function getStatusInfo(status, err = {}) {
+function getStatusInfo(err = { response: {}}) {
+  let retCode = err.response.status;
   let msg;
-  switch (status) {
+  switch (retCode) {
     case -1:
-      msg = err.message || "系统错误";
+      msg = err.retMsg || "系统错误";
       break;
     case 10001:
-      msg = err.message || "token不存在";
+      msg = err.retMsg || "token不存在";
       break;
     case 10002:
-      msg = err.message || "参数不合法";
+      msg = err.retMsg || "参数不合法";
       break;
     case 10003:
-      msg = err.message || "用户不存在";
+      msg = err.retMsg || "用户不存在";
       break;
     case 10004:
-      msg = err.message || "验证码无效";
+      msg = err.retMsg || "验证码无效";
       break;
     case 405:
-      msg = err.message || "请登录";
+      msg = err.retMsg || "请登录";
       break;
     case 500:
-      msg = err.message || "服务器内部出错";
+      msg = err.retMsg || "服务器内部出错";
       break;
     default:
-      msg = err.message || "";
+      msg = err.retMsg || "";
   }
   return msg;
 }

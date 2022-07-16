@@ -59,16 +59,16 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: true
+    },
+    proxy: {
+      "/mrv/api": {
+        target: "http://localhost:9600", // lion-api
+        changeOrigin: true,
+        pathRewrite: {
+          "^/mrv/api": "/mrv"
+        }
+      }
     }
-    // proxy: {
-    //   "/dz/api": {
-    //     target: "http://dz-api.duolaibao88.com",
-    //     changeOrigin: true,
-    //     pathRewrite: {
-    //       "^/dz/api": ""
-    //     }
-    //   }
-    // }
   },
 
   configureWebpack: {
