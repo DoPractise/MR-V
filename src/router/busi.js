@@ -43,6 +43,14 @@ const routes = [
       title: "预览3pdf"
     },
     component: resolve => require(["@/views/pdf/preview3"], resolve)
+  },
+  {
+    path: "/parse-img",
+    name: "parse-img",
+    meta: {
+      title: "编辑器中粘贴显示图片"
+    },
+    component: resolve => require(["@/views/parse-img/parse-img"], resolve)
   }
 ];
 export default routes;
