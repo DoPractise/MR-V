@@ -57,7 +57,9 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "node-sass": "^5.0.0",
+    "postcss-px-to-viewport": "^1.1.1",
     "postcss-pxtorem": "^5.1.1",
+    "postcss-viewport-units": "^0.1.6",
     "prettier": "^2.5.0",
     "sass-loader": "^10.0.5",
     "vue-template-compiler": "^2.6.10"

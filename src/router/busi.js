@@ -67,6 +67,14 @@ const routes = [
       title: "移动端适配模板1"
     },
     component: resolve => require(["@/views/mobile/demo1"], resolve)
+  },
+  {
+    path: "/mobile/demo2",
+    name: "mobileDemo2",
+    meta: {
+      title: "移动端适配模板2"
+    },
+    component: resolve => require(["@/views/mobile/demo2"], resolve)
   }
 ];
 export default routes;

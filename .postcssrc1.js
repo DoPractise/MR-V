@@ -1,7 +1,28 @@
-// https://segmentfault.com/a/1190000038159934
+// https://github.com/michael-ciniawsky/postcss-load-config
+
 module.exports = {
   plugins: {
-    "postcss-viewport-units": {},
+    "postcss-pxtorem": {
+      // 750设计标准
+      rootValue: 75,
+      // 转换成的rem后，保留小数点后几位
+      unitPrecision: 5,
+      /**
+       * 将会被转换的css属性列表，
+       * 设置为*表示全部，['*','*position*','!letter-spacing','!font*']
+       * *position* 表示所有包含 position 的属性
+       * !letter-spacing 表示非 letter-spacing 属性
+       * !font* 表示非font-size font-weight ... 等的属性
+       * */
+      propList: ["*", "!letter-spacing"],
+      // 不会被转换的class选择器名，支持正则
+      selectorBlackList: [".rem-"],
+      replace: true,
+      // 允许在媒体查询中转换`px`
+      mediaQuery: false,
+      // 小于1px的将不会被转换
+      minPixelValue: 1
+    },
     "postcss-px-to-viewport": {
       unitToConvert: "px", // 需要转换的单位
       viewportWidth: 750, // 视口宽度，等同于设计稿宽度
@@ -21,7 +42,7 @@ module.exports = {
        * 设置为字符串，转换器在做转换时会忽略那些选择器中包含该字符串的选择器，如：['body']会匹配到 .body-class，也就意味着.body-class对应的样式设置不会被转换
        * 设置为正则表达式，在做转换前会先校验选择器是否匹配该正则，如果匹配，则不进行转换，如[/^body$/]会匹配到 body 但是不会匹配到 .body
        */
-      selectorBlackList: [".ignore", ".hairlines"],
+      selectorBlackList: ['.ignore', '.hairlines'],
       minPixelValue: 1, // 最小的像素单位值
       mediaQuery: false, // 是否转换媒体查询中设置的属性值
       replace: true, // 替换包含vw的规则，而不是添加回退
