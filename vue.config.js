@@ -38,18 +38,7 @@ module.exports = {
 
     // 为预处理器的 loader 传递自定义选项。比如传递给
     // sass-loader 时，使用 `{ sass: { ... } }`。
-    loaderOptions: {
-      postcss: {
-        plugins: [
-          require("postcss-pxtorem")({
-            rootValue: 37.5, // 换算的基数
-            selectorBlackList: [".van-"], // 忽略转换正则匹配项
-            propList: ["*"],
-            minPixelValue: 2
-          })
-        ]
-      }
-    }
+    loaderOptions: {}
   },
   // 配置 webpack-dev-server 行为。
   devServer: {
@@ -80,17 +69,6 @@ module.exports = {
     }
   },
   chainWebpack(config) {
-    config.module
-      .rule("css")
-      .test(/\.css$/)
-      .oneOf("vue")
-      .resourceQuery(/\?vue/)
-      .use("px2rem")
-      .loader("px2rem-loader")
-      .options({
-        remUnit: 75
-      });
-
     // 加载本地pdf文件
     const fileRule = config.module.rule("file");
     fileRule.uses.clear();

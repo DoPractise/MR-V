@@ -59,7 +59,6 @@
     "node-sass": "^5.0.0",
     "postcss-pxtorem": "^5.1.1",
     "prettier": "^2.5.0",
-    "px2rem-loader": "^0.1.9",
     "sass-loader": "^10.0.5",
     "vue-template-compiler": "^2.6.10"
   },
