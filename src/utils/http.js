@@ -68,7 +68,7 @@ export default function(options) {
         return resData.data;
       },
       err => {
-        // 统一处理响应错误
+        // 服务器错误统一处理[非接口定义状态]
         if (err && err.response) {
           err.retCode = err.response.status + "";
           err.retMsg = err.response.statusText;
@@ -77,7 +77,7 @@ export default function(options) {
 
         // 超时处理
         if (err.retCode.toUpperCase() === "ECONNABORTED" && err.retMsg.toLowerCase().indexOf("timeout") !== -1) {
-          err.msg = "服务器响应超时";
+          err.retMsg = "服务器响应超时";
         }
 
         Toast({

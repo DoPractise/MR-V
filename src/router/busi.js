@@ -75,6 +75,14 @@ const routes = [
       title: "移动端适配模板2"
     },
     component: resolve => require(["@/views/mobile/demo2"], resolve)
+  },
+  {
+    path: "/article/:id",
+    name: "ArticleAdapt",
+    meta: {
+      title: "文章适配器"
+    },
+    component: resolve => require(["@/views/article/article1"], resolve)
   }
 ];
 export default routes;
