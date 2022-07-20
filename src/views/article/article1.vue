@@ -32,7 +32,7 @@ export default {
             getArticle({ id })
                 .then(res => {
                     this.articleHtml = res;
-                    window.requestAnimationFrame(this.resetArticleContent());
+                    this.resetArticleContent();
                 })
                 .catch(err => {
                     console.log(28, err);

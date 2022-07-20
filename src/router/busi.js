@@ -83,6 +83,14 @@ const routes = [
       title: "文章适配器"
     },
     component: resolve => require(["@/views/article/article1"], resolve)
+  },
+  {
+    path: "/list/:id",
+    name: "ListAdapt",
+    meta: {
+      title: "列表适配器"
+    },
+    component: resolve => require(["@/views/list/list"], resolve)
   }
 ];
 export default routes;

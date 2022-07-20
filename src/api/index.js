@@ -18,7 +18,17 @@ export function getArticle(data = { }) {
   })
 }
 
+// 获取列表内容
+export function getList(data = { }) {
+  return http({
+    url: "/list/" + data.id,
+    method: "get",
+    headers: {'Content-Type': 'application/json'}
+  })
+}
+
 export default {
   upload,
-  getArticle
+  getArticle,
+  getList
 };
