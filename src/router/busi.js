@@ -91,6 +91,46 @@ const routes = [
       title: "列表适配器"
     },
     component: resolve => require(["@/views/list/list"], resolve)
+  },
+  {
+    path: "/form/input",
+    name: "FormInput",
+    meta: {
+      title: "表单元素input"
+    },
+    component: resolve => require(["@/views/form/input"], resolve)
+  },
+  {
+    path: "/form/textarea",
+    name: "FormTextarea",
+    meta: {
+      title: "表单元素textarea"
+    },
+    component: resolve => require(["@/views/form/textarea"], resolve)
+  },
+  {
+    path: "/listen/define_properties",
+    name: "ListenDefineProperties",
+    meta: {
+      title: "数据监听"
+    },
+    component: resolve => require(["@/views/listen/defineProperties"], resolve)
+  },
+  {
+    path: "/listen/mutation_observer",
+    name: "ListenMutationObserver",
+    meta: {
+      title: "DOM监听"
+    },
+    component: resolve => require(["@/views/listen/mutationObserver"], resolve)
+  },
+  {
+    path: "/listen/proxy_and_reflect",
+    name: "ListenProxyAndReflect",
+    meta: {
+      title: "代理和反射"
+    },
+    component: resolve => require(["@/views/listen/proxyAndReflect"], resolve)
   }
 ];
 export default routes;
