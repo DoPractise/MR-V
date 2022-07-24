@@ -27,8 +27,23 @@ let router = new Router({
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
   NProgress.start();
-  next();
+  if(to.matched.length == 0) {
+    from.path ? next({ path: from.path }): next('/error/40x')
+  } else {
+    next();
+  }
   NProgress.done();
+});
+
+router.onError(error => {
+  // #https://segmentfault.com/a/1190000016382323
+  const pattern = /Loading chunk (\d)+ failed/g;
+  const isChunkLoadFailed = error.message.match(pattern);
+  const targetPath = router.history.pending.fullPath;
+  if(isChunkLoadFailed) {
+    console.log("进入纠错页面");
+    router.replace(targetPath);
+  }
 });
 
 export default router;

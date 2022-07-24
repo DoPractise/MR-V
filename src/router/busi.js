@@ -13,6 +13,14 @@ const routes = [
     component: resolve => require(["@/views/index/index"], resolve)
   },
   {
+    path: "/error/40x",
+    name: "Error40x",
+    meta: {
+      title: "4XX错误"
+    },
+    component: resolve => require(["@/views/error/40x"], resolve)
+  },
+  {
     path: "/pdf/make",
     name: "MakePdf",
     meta: {
