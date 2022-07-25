@@ -139,6 +139,22 @@ const routes = [
       title: "代理和反射"
     },
     component: resolve => require(["@/views/listen/proxyAndReflect"], resolve)
+  },
+  {
+    path: "/network/check",
+    name: "NetworkCheck",
+    meta: {
+      title: "网络检测"
+    },
+    component: resolve => require(["@/views/network/check"], resolve)
+  },
+  {
+    path: "/network/monkey",
+    name: "NetworkMonkey",
+    meta: {
+      title: "模拟随机用户操作"
+    },
+    component: resolve => require(["@/views/network/monkey"], resolve)
   }
 ];
 export default routes;
