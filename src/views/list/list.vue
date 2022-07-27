@@ -39,7 +39,7 @@ export default {
       const id = new Date().getTime();
       getList({ id })
         .then(res => {
-          this.list = res;
+          this.list = res.data;
           let midLength = parseInt(res.length / 2);
           this.selected = midLength;
           this.$nextTick(()=>{

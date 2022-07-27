@@ -70,7 +70,7 @@ export default {
       //   fd.append("chunk", "0"); 添加form表单中其他数据
       upload(fd).then(res => {
         console.log("上传成功", res);
-        this.remoteFileUrl = res;
+        this.remoteFileUrl = res.data;
       }).catch(err => {
         console.error(err);
       });

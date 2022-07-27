@@ -31,7 +31,7 @@ export default {
             const id = new Date().getTime();
             getArticle({ id })
                 .then(res => {
-                    this.articleHtml = res;
+                    this.articleHtml = res.data;
                     this.resetArticleContent();
                 })
                 .catch(err => {

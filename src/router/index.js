@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import routes from "./busi";
+import { clearPending } from "@/utils/http"
 import NProgress from "nprogress"; // progress bar
 import "nprogress/nprogress.css"; // progress bar style
 NProgress.configure({ showSpinner: false });
@@ -25,6 +26,7 @@ let router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+  clearPending();
   document.title = to.meta.title;
   NProgress.start();
   if(to.matched.length == 0) {

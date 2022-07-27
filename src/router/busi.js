@@ -155,6 +155,22 @@ const routes = [
       title: "模拟随机用户操作"
     },
     component: resolve => require(["@/views/network/monkey"], resolve)
+  },
+  {
+    path: "/network/intercept",
+    name: "NetworkIntercept",
+    meta: {
+      title: "拦截http请求"
+    },
+    component: resolve => require(["@/views/network/intercept"], resolve)
+  },
+  {
+    path: "/flex/flex",
+    name: "flex",
+    meta: {
+      title: "flex布局"
+    },
+    component: resolve => require(["@/views/flex/flex"], resolve)
   }
 ];
 export default routes;

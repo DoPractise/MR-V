@@ -27,6 +27,16 @@ export function getList(data = { }) {
   })
 }
 
+// 模拟批量请求
+export function getBatchRes(params = { }) {
+  return http({
+    url: "/getBatchRes",
+    method: "get",
+    params,
+    headers: {'Content-Type': 'application/json'}
+  })
+}
+
 export default {
   upload,
   getArticle,
