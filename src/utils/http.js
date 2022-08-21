@@ -3,8 +3,9 @@ import axios from "axios";
 import qs from "qs";
 import { Toast } from "vant";
 import router from "@/router";
-import { baseUrl } from "@/config";
+import config from "@/config";
 import store from "@/store";
+const baseUrl = config.baseUrl;
 
 function getStatusInfo(err = { response: {} }) {
   let retCode = err.response.status;

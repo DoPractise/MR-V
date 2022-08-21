@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 const merge = require("webpack-merge");
 const baseWebpackConfig = require("./webpack.base.conf");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -36,14 +35,6 @@ let webpackConfig = merge(baseWebpackConfig, {
     // vue: "Vue"
   },
   plugins: [
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: '"production"',
-        BASE_API: '"https://api-prod"',
-        APP_ORIGIN: '"https://www.bb.com"'
-      }
-    }),
-
     new miniCssExtractPlugin({
       filename: "css/[name][chunkhash].css",
       chunkFilename: "css/[id][chunkhash].css"
