@@ -1,6 +1,5 @@
 import Vue from "vue";
-// import "lib-flexible"
-import App from "./App";
+import App from "./App.vue";
 import router from "./router";
 import "@/styles/index.scss";
 import store from '@/store';
@@ -12,8 +11,7 @@ Vue.use(icbComponents);
 Vue.config.productionTip = false;
 
 new Vue({
-  el: "#app",
+  render: h => h(App),
   router,
-  store,
-  render: h => h(App)
-});
+  store
+}).$mount("#app");
