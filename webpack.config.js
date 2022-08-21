@@ -25,7 +25,7 @@ module.exports = {
   plugins:[
     new HtmlWebpackplugin({
       filename: 'index.html', // 打包后的文件名，默认index.html
-      template: path.resolve(__dirname, 'index.html') // 导入被打包的文件模板
+      template: path.resolve(__dirname, 'public/index.html') // 导入被打包的文件模板
     })
   ]
 };
