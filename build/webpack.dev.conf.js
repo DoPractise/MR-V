@@ -53,6 +53,20 @@ module.exports = merge(baseWebpackConfig, {
     host: "0.0.0.0",
     port: "9527",
     hot: false,
-    disableHostCheck: true
+    disableHostCheck: true,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
+    compress: true,
+    proxy: {
+      "/mrv/api": {
+        target: "http://localhost:9600", // lion-api
+        changeOrigin: true,
+        pathRewrite: {
+          "^/mrv/api": "/mrv"
+        }
+      }
+    }
   }
 });
