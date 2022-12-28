@@ -171,6 +171,14 @@ const routes = [
       title: "flex布局"
     },
     component: resolve => require(["@/views/flex/flex"], resolve)
+  },
+  {
+    path: "/chart",
+    name: "chart",
+    meta: {
+      title: "chart.js图形"
+    },
+    component: resolve => require(["@/views/chart/chart"], resolve)
   }
 ];
 export default routes;

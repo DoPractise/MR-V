@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "chart.js": "^2.8.0-rc.1",
     "gremlins.js": "^2.2.0",
     "html2canvas": "^1.4.1",
     "jquery": "^3.6.0",
